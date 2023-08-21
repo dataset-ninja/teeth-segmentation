@@ -79,6 +79,10 @@ def convert_and_upload_supervisely_project(
     ds_name = "ds"
     batch_size = 30
 
+    """
+        13(plygon) DELETE IN FUTURE DROM RAW DATA
+    """
+
     images_folder_name = "img"
     masks_folder_name = "masks_machine"
     masks_ext = ".png"
