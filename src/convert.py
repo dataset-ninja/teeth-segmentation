@@ -3,11 +3,23 @@ from urllib.parse import unquote, urlparse
 
 import numpy as np
 import supervisely as sly
+from cv2 import connectedComponents
 from dataset_tools.convert import unpack_if_archive
-from supervisely.io.fs import file_exists, get_file_name, get_file_size
+from dotenv import load_dotenv
+from supervisely.imaging.color import hex2rgb
+from supervisely.io.fs import (
+    file_exists,
+    get_file_ext,
+    get_file_name,
+    get_file_name_with_ext,
+    get_file_size,
+)
+from supervisely.io.json import load_json_file
 from tqdm import tqdm
 
 import src.settings as s
+
+# https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images
 
 
 def download_dataset(teamfiles_dir: str) -> str:
@@ -58,7 +70,12 @@ def download_dataset(teamfiles_dir: str) -> str:
 def convert_and_upload_supervisely_project(
     api: sly.Api, workspace_id: int, project_name: str
 ) -> sly.ProjectInfo:
-    dataset_path = "/home/iwatkot/supervisely/ninja-datasets/teeth/Teeth Segmentation JSON/d2"
+    # project_name = "Teeth Segmentation"
+    dataset_path = "APP_DATA/archive/Teeth Segmentation JSON/d2"
+    obj_class_to_machine_color = (
+        "APP_DATA/archive/Teeth Segmentation JSON/obj_class_to_machine_color.json"
+    )
+    obj_class_to_color = "APP_DATA/archive/Teeth Segmentation JSON/meta.json"
     ds_name = "ds"
     batch_size = 30
 
@@ -78,6 +95,7 @@ def convert_and_upload_supervisely_project(
             img_wight = mask_np.shape[1]
             unique_pixels = np.unique(mask_np)
             for pixel in unique_pixels[1:]:
+                obj_class = pixel_to_class[pixel]
                 mask = mask_np == pixel
                 curr_bitmap = sly.Bitmap(mask)
                 curr_label = sly.Label(curr_bitmap, obj_class)
@@ -85,10 +103,21 @@ def convert_and_upload_supervisely_project(
 
         return sly.Annotation(img_size=(img_height, img_wight), labels=labels)
 
-    obj_class = sly.ObjClass("tooth", sly.Bitmap)
+    class_to_color = {}
+    class_to_color_data = load_json_file(obj_class_to_color)["classes"]
+    for curr_class_to_color in class_to_color_data:
+        class_to_color[curr_class_to_color["title"]] = hex2rgb(curr_class_to_color["color"])
+
+    pixel_to_class = {}
+    obj_class_to_color = load_json_file(obj_class_to_machine_color)
+    for curr_data in obj_class_to_color:
+        pixel = obj_class_to_color[curr_data][0]
+        color = class_to_color[curr_data]
+        curr_class = sly.ObjClass(curr_data, sly.Bitmap, color=color)
+        pixel_to_class[pixel] = curr_class
 
     project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
-    meta = sly.ProjectMeta(obj_classes=[obj_class])
+    meta = sly.ProjectMeta(obj_classes=list(pixel_to_class.values()))
     api.project.update_meta(project.id, meta.to_json())
 
     dataset = api.dataset.create(project.id, ds_name, change_name_if_conflict=True)
@@ -112,5 +141,4 @@ def convert_and_upload_supervisely_project(
         api.annotation.upload_anns(img_ids, anns_batch)
 
         progress.iters_done_report(len(img_names_batch))
-
     return project

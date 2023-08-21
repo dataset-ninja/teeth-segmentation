@@ -23,7 +23,7 @@ LICENSE: License = License.CC0_1_0()
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Medical(is_used=False)]
 CATEGORY: Category = Category.Medical()
 
-CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation(), CVTask.ObjectDetection()]
+CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.SemanticSegmentation()]
 
 RELEASE_DATE: Optional[str] = None  # e.g. "YYYY-MM-DD"
@@ -35,7 +35,7 @@ HOMEPAGE_URL: str = (
 )
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 1608055
+PREVIEW_IMAGE_ID: int = 2161436
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/teeth-segmentation"
@@ -46,7 +46,7 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/teeth-segmentation"
 ##################################
 DOWNLOAD_ORIGINAL_URL: Optional[
     Union[str, dict]
-] = "https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images"
+] = "https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images/download?datasetVersionNumber=1"
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
 CLASS2COLOR: Optional[Dict[str, List[str]]] = None
