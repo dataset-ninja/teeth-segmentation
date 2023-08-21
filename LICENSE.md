@@ -1,1 +1,1 @@
-Teeth Segmentation on dental X-ray images is under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) license.
+Teeth Segmentation on Dental X-ray Images is under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) license.

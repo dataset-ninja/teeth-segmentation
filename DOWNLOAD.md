@@ -1,6 +1,6 @@
-Dataset **Teeth Segmentation on dental X-ray images** can be downloaded in Supervisely format:
+Dataset **Teeth Segmentation on Dental X-ray Images** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/3/y/0I/zI4eYfkm5ypz68IafUsRwbgl44j0X1Sakzk1LFrN2FLwj937CwFbkV50RZaXek1DSVkV1t63aIBRoD9SXSwFqmqpWJZU6jhxzcWz0pquU6RYgQdJhCDUgXnR1kKH.tar)
+ [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/m/H/ZK/t7f8wdSfCPl9uIr67c8ycq03aTAmYRhm9QiiU1OnGj3R2Kg7vPDBwEY5PgLaEWwr0DBfoasbkGogtfRVzYflUGAnGKk1jnmcwzJ9E4yoTFdZgILAAGalRhyczvt5.tar)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
@@ -11,6 +11,8 @@ pip install --upgrade dataset-tools
 ``` python
 import dataset_tools as dtools
 
-dtools.download(dataset='Teeth Segmentation on dental X-ray images', dst_path='~/dtools/datasets/Teeth Segmentation on dental X-ray images.tar')
+dtools.download(dataset='Teeth Segmentation on Dental X-ray Images', dst_dir='~/dataset-ninja/')
 ```
-The data in original format can be 🔗[downloaded here](https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images)
+Make sure not to overlook the [python code example](https://developer.supervisely.com/getting-started/python-sdk-tutorials/iterate-over-a-local-project) available on the Supervisely Developer Portal. It will give you a clear idea of how to effortlessly work with the downloaded dataset.
+
+The data in original format can be [downloaded here](https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images/download?datasetVersionNumber=1).
