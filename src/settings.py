@@ -58,6 +58,7 @@ CITATION_URL: Optional[
     str
 ] = "https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images"
 AUTHORS: Optional[List[str]] = None
+AUTHORS_CONTACTS: Optional[List[str]] = ["hello@humansintheloop.org"]
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "Humans In The Loop, Bulgaria"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://humansintheloop.org/"
@@ -105,6 +106,7 @@ def get_settings():
     settings["paper"] = PAPER
     settings["citation_url"] = CITATION_URL
     settings["authors"] = AUTHORS
+    settings["authors_contacts"] = AUTHORS_CONTACTS
     settings["organization_name"] = ORGANIZATION_NAME
     settings["organization_url"] = ORGANIZATION_URL
     settings["slytagsplit"] = SLYTAGSPLIT
