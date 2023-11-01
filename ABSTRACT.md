@@ -1,4 +1,1 @@
-The **Teeth Segmentation** dataset includes 598 images. There are be 32 classes, called 1, 2, 3, 4, etc up to 32.
-
-
-Numbering starts with the upper left teeth and continues clockwise to the lower left teeth. Each tooth has a unique number based on its position.
+The **Teeth Segmentation** dataset comprises 598 images, and it involves 32 classes denoted as 1, 2, 3, 4, and so on up to 32. The numbering sequence initiates from the upper left teeth and proceeds in a clockwise direction, encompassing the lower left teeth. Every tooth is assigned a distinct number corresponding to its specific location.
