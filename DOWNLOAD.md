@@ -1,6 +1,6 @@
 Dataset **Teeth Segmentation on Dental X-ray Images** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/l/Q/b1/mUPQaz5SdP9xmTc4uV83be8GzxwrO8tiQc0IgQANhy3qwyWHzjToqzSBQkZD4Vy0nJp5QOLVf8Dafu9k88bEK46jq0Gj27qnXyy7X9cQiyMOfS8GpZhvmBsdY5oq.tar)
+ [Download](https://www.dropbox.com/scl/fi/mzmaw1s3h8cjnl2vakbvz/teeth-segmentation-on-dental-x-ray-images-DatasetNinja.tar?rlkey=oeaa9wicuj929zr6q0v6kgjc9&dl=1)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
